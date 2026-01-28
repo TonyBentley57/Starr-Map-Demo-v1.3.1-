@@ -1,0 +1,64 @@
+
+:root{
+  --mango:#FFB84C; --sky:#6EC8FF; --lav:#C7A3FF; --mint:#7DE1C1; --coral:#FF6F61;
+  --navy:#1E2A38; --navy60:rgba(30,42,56,.6); --soft:#F4F4F7; --white:#fff;
+  --focus:#6EC8FF; --shadow:0 6px 20px rgba(0,0,0,.08);
+  --radius-12:12px; --radius-16:16px; --radius-20:20px;
+}
+html,body{height:100%;}
+body{margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--navy); background:var(--soft);}    
+.app{max-width:1280px; min-height:100vh; margin:0 auto; display:flex; flex-direction:column;}
+header.appbar{height:72px; background:var(--white); display:flex; align-items:center; justify-content:space-between; padding:0 24px; box-shadow:var(--shadow); position:sticky; top:0; z-index:3}
+.brand{font-weight:600}
+.row{display:flex; gap:12px; align-items:center}
+.btn{appearance:none; border:0; border-radius:var(--radius-16); padding:14px 22px; font-weight:600; cursor:pointer; transition:transform .15s ease, background .15s ease, color .15s ease;}
+.btn:focus-visible{outline:3px solid var(--focus); outline-offset:2px}
+.btn.primary{background:var(--mango); color:var(--white)}
+.btn.secondary{background:var(--lav); color:var(--navy)}
+.btn.ghost{background:transparent; color:var(--navy); border:2px solid rgba(30,42,56,.12)}
+.btn:disabled{opacity:.5; cursor:not-allowed}
+main{flex:1; display:flex; flex-direction:column;}
+.content{width:100%; max-width:1040px; margin:0 auto; padding:24px;}
+.title{font-size:24px; font-weight:800; margin:16px 0 8px}
+.subtitle{color:var(--navy60); margin:0 0 16px}
+.grid{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:24px}
+.tile{background:var(--white); border-radius:var(--radius-20); padding:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; border:2px solid rgba(30,42,56,.08); min-height:160px}
+.tile[aria-pressed="true"], .tile.selected{border-color:var(--sky); background:rgba(110,200,255,.18)}
+.tile .emoji{font-size:56px; line-height:1}
+.tile button{all:unset}
+.tile:focus-visible{outline:3px solid var(--focus); outline-offset:2px}
+.list{display:flex; flex-direction:column; gap:12px}
+.chip{background:var(--white); border-radius:var(--radius-16); border:2px solid rgba(30,42,56,.12); padding:16px 18px; display:flex; justify-content:space-between; align-items:center;}
+.chip[aria-checked="true"]{border-color:var(--sky); background:rgba(110,200,255,.18)}
+.card{background:var(--white); border-radius:var(--radius-16); box-shadow:var(--shadow); padding:18px;}
+.pill{display:inline-block; background:var(--mint); color:var(--navy); padding:4px 10px; border-radius:999px; font-weight:700; font-size:12px}
+.footerbar{height:100px; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:0 24px; background:var(--white); box-shadow:var(--shadow); position:sticky; bottom:0;}
+.hidden{display:none !important}
+
+/* Modal */
+.modal-backdrop{position:fixed; inset:0; background:rgba(0,0,0,.25); display:flex; align-items:center; justify-content:center; z-index:5}
+.modal{background:var(--white); border-radius:var(--radius-16); padding:20px; width:min(720px, 92vw); box-shadow:var(--shadow)}
+
+/* Reduced motion */
+.animated{animation: floaty 3s ease-in-out infinite}
+@keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+.reduced .animated{animation:none}
+
+/* Simplified mode: larger targets, fewer columns */
+.simplified .grid{grid-template-columns:repeat(3, minmax(0,1fr))}
+.simplified .tile{min-height:180px}
+
+/* Small helper */
+.spacer{height:12px}
+.muted{color:var(--navy60)}
+.align-right{margin-left:auto}
+.steps{margin:10px 0 0; padding-left:18px}
+.kbd{padding:2px 6px; border:1px solid rgba(30,42,56,.2); border-radius:6px; background:#fff; font-size:12px}
+.inline-input{display:flex; gap:10px; align-items:center}
+input[type=text]{padding:10px 12px; border-radius:10px; border:2px solid rgba(30,42,56,.15); font-size:16px;}
+
+.errorbar{position:fixed; top:76px; left:50%; transform:translateX(-50%); background:#fff3f2; color:#8a1f17; border:2px solid #f4b4ae; border-radius:12px; padding:10px 14px; z-index:10; box-shadow:var(--shadow); display:none}
+
+/* No-JS banner visible by default; app.js hides it on load */
+.nojs{position:fixed; inset:0; background:rgba(0,0,0,.55); color:#fff; display:flex; align-items:center; justify-content:center; text-align:center; padding:24px; z-index:9999}
+.nojs.hidden{display:none}
